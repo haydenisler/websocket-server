@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <span>
+        Hello, world!
+    </span>
+    <button id="join-room">
+        Join Rooom
+    </button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const joinButton = document.getElementById('join-room');
+
+        joinButton.addEventListener('click', (e) => {
+            socket.emit('joinRoom')
+        });
+
+        socket.on('message', ({ message }) => {
+            console.log(message);
+        });
+
+    </script>
+</body>
+
+</html>
